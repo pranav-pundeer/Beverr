@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "587926308569",
+    "project_id": "beverr-76554",
+    "storage_bucket": "beverr-76554.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587926308569:android:df2e040558a5459f5620c8",
+        "android_client_info": {
+          "package_name": "com.pranavpundeer.beverr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587926308569-bq72pb49ol2m2j3prorc7p2g0pls3sev.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pranavpundeer.beverr",
+            "certificate_hash": "5d97abc1471a5e8e9d2e20ccbc79fa9f1097a922"
+          }
+        },
+        {
+          "client_id": "587926308569-sq7t1cfecpsif1a0atmrf65lr0l5jpd6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYwLLjPuyhLFHZ66wXwyCOb6mo1memvP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587926308569-sq7t1cfecpsif1a0atmrf65lr0l5jpd6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
