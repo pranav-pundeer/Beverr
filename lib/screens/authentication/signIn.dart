@@ -1,5 +1,4 @@
 import 'package:beverr/services/auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -30,7 +29,7 @@ class _SignInState extends State<SignIn> {
               print(null);
             }else{
               print('sign in complete');
-              print(user);
+              print(user.uid);
             }
           },
         ),
