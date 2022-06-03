@@ -29,6 +29,7 @@ class _SignInState extends State<SignIn> {
             if(user == null){
               print(null);
             }else{
+              print('sign in complete');
               print(user);
             }
           },
