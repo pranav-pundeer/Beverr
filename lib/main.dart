@@ -8,11 +8,11 @@ import 'package:provider/provider.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(Beverr());
+  runApp(const Beverr());
 }
 
 class Beverr extends StatelessWidget {
-
+  const Beverr({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return StreamProvider<UserModel?>.value(
