@@ -1,5 +1,8 @@
+import 'package:beverr/constants/loading.dart';
 import 'package:beverr/services/auth.dart';
 import 'package:flutter/material.dart';
+
+import '../../constants/text.dart';
 
 class SignIn extends StatefulWidget {
 
@@ -17,19 +20,20 @@ class _SignInState extends State<SignIn> {
   String password= "";
   String error= "";
   final _formkey = GlobalKey<FormState>();
+  bool loading= false;
 
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading? Loading(): Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
         actions: [
           FlatButton.icon(onPressed: (){
             widget.toggleView();
           },
-            icon: Icon(Icons.person),
-            label: Text('Register'),),
+            icon: const Icon(Icons.person),
+            label: const Text('Register'),),
         ],
         elevation: 0.0,
         backgroundColor: Colors.brown[400],
@@ -45,23 +49,20 @@ class _SignInState extends State<SignIn> {
                 validator: (value){
                   return (value!.isEmpty? 'please enter a valid email': null);
                 },
-                decoration: const InputDecoration(
-                  hintText: "Enter email",
-                ),
+                decoration: textFieldDecoration.copyWith(hintText: 'Enter email'),
                 onChanged: (value){
                   setState((){
                     email= value;
                   });
                 },
               ),
+              const SizedBox(height: 20,),
               TextFormField(
                 validator: (value){
                   return (value!.length<6? 'please enter a valid password (atleast 6 characters long)': null);
                 },
                 obscureText: true,
-                decoration: const InputDecoration(
-                  hintText: "Enter password",
-                ),
+                decoration: textFieldDecoration.copyWith(hintText: 'Enter password'),
                 onChanged: (value){
                   setState((){
                     password= value;
@@ -72,9 +73,13 @@ class _SignInState extends State<SignIn> {
               RaisedButton(
                 onPressed: ()async{
                   if(_formkey.currentState!.validate()){
+                    setState(()=>loading= true);
                     dynamic result= await _auth.signInWithEmailAndPassword(email, password);
                     if(result== null){
-                      setState(()=> error= 'couldn\'t sign in with those credentials');
+                      setState((){
+                        error= 'couldn\'t sign in with those credentials';
+                        loading= false;
+                      });
                     }
                   }
                 },
