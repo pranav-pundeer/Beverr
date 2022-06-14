@@ -1,4 +1,6 @@
+import 'package:beverr/constants/loading.dart';
 import 'package:flutter/material.dart';
+import '../../constants/text.dart';
 import '../../services/auth.dart';
 
 class Register extends StatefulWidget {
@@ -15,7 +17,7 @@ class _RegisterState extends State<Register> {
   //form key to enable form validation, because we dont want to send
   //empty requests to firebase auth
   final _formkey = GlobalKey<FormState>();
-
+  bool loading= false;
   final AuthService _auth= AuthService();
   String email= "";
   String password= "";
@@ -23,7 +25,7 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading? const Loading(): Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
         actions: [
@@ -47,23 +49,20 @@ class _RegisterState extends State<Register> {
                 validator: (value){
                   return value!.isEmpty? 'email is required': null;
                 },
-                decoration: const InputDecoration(
-                  hintText: "Enter email",
-                ),
+                decoration: textFieldDecoration.copyWith(hintText: 'Enter email'),
                 onChanged: (value){
                   setState((){
                     email= value;
                   });
                 },
               ),
+              const SizedBox(height: 20,),
               TextFormField(
                 validator: (value){
                   return value!.length< 6? 'password should be of atleast 6 characters': null;
                 },
                 obscureText: true,
-                decoration: const InputDecoration(
-                  hintText: "Enter password",
-                ),
+                decoration: textFieldDecoration.copyWith(hintText: 'Enter password'),
                 onChanged: (value){
                   setState((){
                     password= value;
@@ -74,10 +73,11 @@ class _RegisterState extends State<Register> {
               RaisedButton(
                 onPressed: ()async{
                   if(_formkey.currentState!.validate()){
+                    setState(()=>loading= true);
                     dynamic result= await _auth.registerWithMailAndPassword(email, password);
                     if(result== null){
-                      print('no');
                       setState(()=> errorMessage= 'please enter a valid email');
+                      loading= false;
                     }
                   }
                 },
