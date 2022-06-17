@@ -4,8 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DataBase{
 
-  final String uid;
-  DataBase({required this.uid} );
+  final String? uid;
+  DataBase({this.uid} );
 
   final CollectionReference BeverrUsers= FirebaseFirestore.instance.collection('Users');
 
@@ -15,5 +15,10 @@ class DataBase{
       'name' : name,
       'strength': strength,
     });
+  }
+
+  //get the stream of snapshot of BeverrUsers at the current time
+  Stream<QuerySnapshot> get beverrUsersData{
+    return BeverrUsers.snapshots();
   }
 }
