@@ -16,7 +16,8 @@ class UserTile extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: ListTile(
            leading: CircleAvatar(
-             radius: 25,
+             backgroundImage: AssetImage('images/coffee_icon.png'),
+             radius: 29,
              backgroundColor: Colors.brown[strength!],
            ),
             title: Text(name!),
