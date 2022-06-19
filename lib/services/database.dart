@@ -21,4 +21,9 @@ class DataBase{
   Stream<QuerySnapshot> get beverrUsersData{
     return BeverrUsers.snapshots();
   }
+
+  //get the stream of document snapshot of a particular user at the current time
+  Stream<DocumentSnapshot> get userData{
+      return BeverrUsers.doc(uid).snapshots();
+  }
 }
