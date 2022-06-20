@@ -1,4 +1,5 @@
 import 'package:beverr/models/userModel.dart';
+import 'package:beverr/screens/splashScreen.dart';
 import 'package:beverr/screens/wrapper.dart';
 import 'package:beverr/services/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,7 +21,7 @@ class Beverr extends StatelessWidget {
       initialData: null,
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Wrapper(),
+        home: SplashScreen(),
       ),
     );
   }
