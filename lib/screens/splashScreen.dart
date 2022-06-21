@@ -10,8 +10,7 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
-    with TickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin {
   late AnimationController _coffeeController;
   bool copAnimated = false;
   bool animateCafeText = false;
@@ -82,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen>
                   child: AnimatedOpacity(
                     opacity: animateCafeText ? 1 : 0,
                     duration: const Duration(milliseconds: 1000 ),
-                    child: const Text(
+                    child:  Text(
                       'B E V E R R',
                       style: TextStyle(fontSize: 50.0, color: cafeBrown),
                     ),
@@ -113,7 +112,8 @@ class _BottomPart extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text(
-              'Find The Best Coffee for You',
+              'Share your way of the Coffee with the people around you',
+              textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 27.0,
                   fontWeight: FontWeight.bold,
