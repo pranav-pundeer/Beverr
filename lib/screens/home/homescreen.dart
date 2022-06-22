@@ -14,11 +14,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final beverrUsers= Provider.of<QuerySnapshot?>(context);
+    
     final user= Provider.of<UserModel?>(context);
     AuthService auth= AuthService();
-
-
+    FirebaseFirestore.instance.collection("Users").where('name', isEqualTo: 'eren').get().then((value) => print(value.docs[0].get('email')));
+    
     return StreamProvider<QuerySnapshot?>.value(
       value: DataBase(uid: user!.uid).beverrUsersData,
       initialData: null,
@@ -44,7 +44,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             child: ListView(
-              children:[
+              children:const [
                 CurrentUserWidget(),
                 Divider(thickness: 2),
                 UsersList(),
