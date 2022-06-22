@@ -47,7 +47,6 @@ class HomeScreen extends StatelessWidget {
               children:[
                 CurrentUserWidget(),
                 Divider(thickness: 2),
-                Center(child: Text('Mind Others\' Choices')),
                 UsersList(),
               ],
             ),
