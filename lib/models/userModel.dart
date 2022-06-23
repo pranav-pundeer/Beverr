@@ -9,6 +9,7 @@ class UserDataModel {
   final String sugar;
   final int strength;
   final String email;
+  final String organization;
 
-  UserDataModel({required this.uid, required this.name, required this.sugar, required this.strength, required this.email});
+  UserDataModel({required this.uid, required this.name, required this.sugar, required this.strength, required this.email, required this.organization});
 }
