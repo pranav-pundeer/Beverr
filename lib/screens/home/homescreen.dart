@@ -14,11 +14,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-    final user= Provider.of<UserModel?>(context);
-    AuthService auth= AuthService();
-    FirebaseFirestore.instance.collection("Users").where('name', isEqualTo: 'eren').get().then((value) => print(value.docs[0].get('email')));
-    
+    final user = Provider.of<UserModel?>(context);
+    final userData = Provider.of<UserDataModel?>(context);
+    AuthService auth = AuthService();
+
     return StreamProvider<QuerySnapshot?>.value(
       value: DataBase(uid: user!.uid).beverrUsersData,
       initialData: null,
@@ -28,30 +27,74 @@ class HomeScreen extends StatelessWidget {
           elevation: 0.0,
           title: const Text('Beverr'),
           actions: [
-            FlatButton.icon(icon: const Icon(Icons.logout), label: const Text('sign out'),
-                onPressed:() async{
-                    await auth.signOut();
+            FlatButton.icon(
+              icon: const Icon(Icons.logout), label: const Text('sign out'),
+              onPressed: () async {
+                await auth.signOut();
               },
             ),
           ],
         ),
         backgroundColor: Colors.brown[50],
         body: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('images/coffee_bg.png'),
-                fit: BoxFit.cover,
-              ),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('images/coffee_bg.png'),
+              fit: BoxFit.cover,
             ),
-            child: ListView(
-              children:const [
-                CurrentUserWidget(),
-                Divider(thickness: 2),
-                UsersList(),
-              ],
-            ),
+          ),
+          child: ListView(
+            children: const [
+              CurrentUserWidget(),
+              Divider(thickness: 2),
+              UsersList(),
+            ],
+          ),
         ),
       ),
     );
   }
+//     return StreamBuilder<QuerySnapshot>(
+//         stream: DataBase(uid: user!.uid).beverrUsersData,
+//         builder: (context, snapshot){
+//           if (snapshot.hasData){
+//               return Scaffold(
+//                 appBar: AppBar(
+//                   backgroundColor: Colors.brown[400],
+//                   elevation: 0.0,
+//                   title: const Text('Beverr'),
+//                   actions: [
+//                     FlatButton.icon(icon: const Icon(Icons.logout), label: const Text('sign out'),
+//                       onPressed:() async{
+//                       await auth.signOut();
+//                       },
+//                     ),
+//                   ],
+//                 ),
+//                 backgroundColor: Colors.brown[50],
+//                 body: Container(
+//                   decoration: const BoxDecoration(
+//                     image: DecorationImage(
+//                       image: AssetImage('images/coffee_bg.png'),
+//                       fit: BoxFit.cover,
+//                     ),
+//                   ),
+//                   child: ListView(
+//                     children:const [
+//                       CurrentUserWidget(),
+//                       Divider(thickness: 2),
+//                       UsersList(),
+//                     ],
+//                   ),
+//                 ),
+//               );
+//           }
+//           else{
+//
+//           }
+//         }
+//
+//     );
+//   }
+// }
 }
