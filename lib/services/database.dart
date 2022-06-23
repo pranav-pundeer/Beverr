@@ -8,14 +8,16 @@ class DataBase{
 
   final CollectionReference BeverrUsers= FirebaseFirestore.instance.collection('Users');
 
-  Future updateUserData(String sugar, String name, int strength, String email)async{
+  Future updateUserData(String sugar, String name, int strength, String email, String organizationName)async{
     return await BeverrUsers.doc(uid).set({
       'sugar': sugar,
       'name' : name,
       'strength': strength,
       'email': email,
+      'organization': organizationName,
     });
   }
+
 
   //get the stream of snapshot of BeverrUsers at the current time
   Stream<QuerySnapshot> get beverrUsersData{
@@ -30,6 +32,7 @@ class DataBase{
       sugar: snapshot.get('sugar'),
       strength: snapshot.get('strength'),
       email: snapshot.get('email'),
+      organization: snapshot.get('organization'),
     );
   }
 
