@@ -100,7 +100,8 @@ class _PreferenceFormState extends State<PreferenceForm> {
                               currentSugar?? userData!.sugar,
                               currentName?? userData!.name,
                               currentStrength ?? userData!.strength,
-                              email?? userData!.email,);
+                              email?? userData!.email,
+                              userData!.organization);
                               Navigator.pop(context);
                             }
                           }),
