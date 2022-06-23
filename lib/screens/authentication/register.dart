@@ -23,6 +23,7 @@ class _RegisterState extends State<Register> {
   String password= "";
   String errorMessage= "";
   String username= "";
+  String organization= "";
 
   @override
   Widget build(BuildContext context) {
@@ -137,8 +138,28 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
                 //const SizedBox(height: 30,),
-                const Spacer(),
 
+                Flexible(
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width/1.75,
+                      child: TextFormField(
+                        validator: (value){
+                          return (value!.isEmpty? 'organization name cannot be empty': null);
+                        },
+                        obscureText: false,
+                        decoration: textFieldDecoration.copyWith(hintText: 'Enter organization name', enabledBorder: InputBorder.none, focusedBorder: InputBorder.none,),
+                        onChanged: (value){
+                          setState((){
+                            organization= value;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                const Spacer(),
                 Flexible(
                   child: Container(
                     height: 60,
@@ -149,7 +170,7 @@ class _RegisterState extends State<Register> {
                       onPressed: ()async{
                           if(_formkey.currentState!.validate()){
                             setState(()=>loading= true);
-                            dynamic result= await _auth.registerWithMailAndPassword(email, password, username);
+                            dynamic result= await _auth.registerWithMailAndPassword(email, password, username, organization);
                             if(result== null){
                               setState(()=> errorMessage= 'please enter a valid email');
                               loading= false;
@@ -161,6 +182,7 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                 ),
+
                 const SizedBox(height: 15,),
                 Text(errorMessage,style: const TextStyle(color: Colors.pink),),
               ],
