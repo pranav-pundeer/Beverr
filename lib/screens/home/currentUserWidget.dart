@@ -1,7 +1,6 @@
 import 'package:beverr/screens/home/preferenceForm.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../models/userModel.dart';
 import '../../services/database.dart';
  class CurrentUserWidget extends StatefulWidget {
@@ -37,6 +36,7 @@ import '../../services/database.dart';
        builder: (context, snapshot) {
          if (snapshot.hasData) {
            UserDataModel? userData = snapshot.data;
+           print(userData);
            return Container(
              child: Padding(
                padding: const EdgeInsets.all(8.0),
@@ -64,6 +64,7 @@ import '../../services/database.dart';
              ),
            );
          } else {
+           print('no');
             return SizedBox(width: 0,);
          }
        }
