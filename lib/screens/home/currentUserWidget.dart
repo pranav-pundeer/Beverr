@@ -52,10 +52,14 @@ import '../../services/database.dart';
                      radius: 29,
                      backgroundColor: Colors.brown[userData!.strength],
                    ),
-                   trailing: FlatButton.icon(icon: const Icon(Icons.edit),
+                   trailing: ElevatedButton.icon(icon: const Icon(Icons.edit),
                        onPressed: () {
                          showBottomSheetPanel();
-                       }, label: Text(''),
+                       },
+                     label: Text(''),
+                     style: ButtonStyle(
+                       backgroundColor: MaterialStateProperty.all(Colors.brown),
+                     ),
                    ),
                    title: Text(userData.name),
                    subtitle: Text('Takes ${userData.sugar} sugar(s)'),

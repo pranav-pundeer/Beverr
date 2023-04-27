@@ -62,11 +62,12 @@ class _SignInState extends State<SignIn> {
                           style: TextStyle(color: Colors.white70,
                               fontWeight: FontWeight.bold,
                               fontSize: 20))),
-                      FlatButton(
+                      TextButton(
                           onPressed: (){
                           widget.toggleView();
                           },
-                          child: Text('Register', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),))
+                          child: Text('Register', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),),
+                      )
                     ],
                   ),
                 ),
@@ -99,9 +100,15 @@ class _SignInState extends State<SignIn> {
                 Container(
                   height: 60,
                   width: 300,
-                  child: RaisedButton(
-                    visualDensity: VisualDensity.adaptivePlatformDensity,
-                    shape: StadiumBorder(),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                          )
+                      ),
+                      backgroundColor: MaterialStateProperty.all(Colors.brown[500]),
+                    ),
                     onPressed: ()async{
                       if(_formkey.currentState!.validate()){
                         setState(()=>loading= true);
@@ -114,7 +121,6 @@ class _SignInState extends State<SignIn> {
                         }
                       }
                     },
-                    color: Colors.brown[500],
                     child: const Text('Sign In', style: TextStyle(color: Colors.white, ),),
                   ),
                 ),

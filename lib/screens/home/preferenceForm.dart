@@ -1,7 +1,6 @@
 import 'package:beverr/constants/loading.dart';
 import 'package:beverr/constants/text.dart';
 import 'package:beverr/services/database.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -90,9 +89,7 @@ class _PreferenceFormState extends State<PreferenceForm> {
                     const Center(child: Text('set coffee strength',)),
                     const SizedBox(height: 65,),
                     Center(
-                      child: RaisedButton(
-                          shape: const StadiumBorder(),
-                          color: Colors.brown,
+                      child: ElevatedButton(
                           child: const Text('Update', style: TextStyle(color: Colors.white),),
                           onPressed: () async{
                             if(_formKey.currentState!.validate()){

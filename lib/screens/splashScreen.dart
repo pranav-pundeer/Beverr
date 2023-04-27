@@ -133,18 +133,22 @@ class _BottomPart extends StatelessWidget {
               child: Container(
                 height: 150.0,
                 width: 150.0,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 2.0),
-                ),
-                child: FlatButton.icon(
-                    shape: CircleBorder(),
+                child: ElevatedButton.icon(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                        )
+                    ),
+                    backgroundColor: MaterialStateProperty.all(Colors.brown[500]),
+                  ),
+                    //shape: CircleBorder(),
                     onPressed: (){
                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const Wrapper()));
                     },
                     icon: const Icon(
                       Icons.coffee,
-                      size: 40.0,
+                      size: 60.0,
                       color: Colors.white,
                     ),
                   label: const Text(''),

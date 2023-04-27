@@ -67,7 +67,7 @@ class _RegisterState extends State<Register> {
                             textAlign: TextAlign.center,
                             style: TextStyle(color: Colors.white,
                                 fontSize: 20))),
-                        FlatButton(onPressed: (){
+                        TextButton(onPressed: (){
                           widget.toggleView();
                         }, child: const Text('Sign In', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),))
                       ],
@@ -143,9 +143,15 @@ class _RegisterState extends State<Register> {
                   child: Container(
                     height: 60,
                     width: 300,
-                    child: RaisedButton(
-                      visualDensity: VisualDensity.adaptivePlatformDensity,
-                      shape: StadiumBorder(),
+                    child: ElevatedButton(
+                        style: ButtonStyle(
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                )
+                            ),
+                          backgroundColor: MaterialStateProperty.all(Colors.brown[500]),
+                        ),
                       onPressed: ()async{
                           if(_formkey.currentState!.validate()){
                             setState(()=>loading= true);
@@ -156,7 +162,6 @@ class _RegisterState extends State<Register> {
                             }
                           }
                       },
-                      color: Colors.brown[500],
                       child: const Text('Take me to Beverr', style: TextStyle(color: Colors.white, ),),
                     ),
                   ),

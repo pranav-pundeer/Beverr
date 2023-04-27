@@ -28,10 +28,13 @@ class HomeScreen extends StatelessWidget {
           elevation: 0.0,
           title: const Text('Beverr'),
           actions: [
-            FlatButton.icon(icon: const Icon(Icons.logout), label: const Text('sign out'),
+            ElevatedButton.icon(icon: const Icon(Icons.logout), label: const Text('sign out'),
                 onPressed:() async{
                     await auth.signOut();
               },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.brown[500])
+              ),
             ),
           ],
         ),
